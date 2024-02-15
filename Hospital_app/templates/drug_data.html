@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container my-3 d-flex justify-content-center align-items-center shadow rounded">
+  <div class="row">
+    {% for i in drug_data %}
+    <div class="col-lg-3 col-md-6 me-5 ms-5 mb-5">
+      <div class="card" style="width: 18rem">
+        {% if i.drug_name == "ยาหม่องตราถ้วยทอง" %}
+        <img src="static/images/drug/goldencupbalm.jpg" class="card-img-top" alt="{{ i.drug_name }}" style="width: 250px; height: 250px;" />
+        {% elif i.drug_name == "ยาแก้ไอเด็ก ตรา ยูอีคอฟ" %}
+        <img src="static/images/drug/coughmixture.jpg" class="card-img-top" alt="{{ i.drug_name }}" style="width: 250px; height: 250px;" />
+        {% else %}
+        <img src="static/images/drug/aspirin.jpg" class="card-img-top" alt="{{ i.drug_name }}" style="width: 250px; height: 250px;" />
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">ชื่อยา : {{ i.drug_name }} </h5>
+          <p class="card-text">ประเภทยา : {{ i.drug_type }}</p>
+          <a href="#" class="btn btn-primary">ซื้อสินค้า</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

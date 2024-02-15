@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="mt-2 p-1 bg-danger text-white rounded">
+    <h4>ประวัติการเบิกยา</h4>
+</div>
+<div class="container-fluid my-3 justify-content-center align-items-center shadow rounded">
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>ชื่อผู้เบิก</th>
+                <th>ที่อยู่</th>
+                <th>เบอร์โทร</th>
+                <th>ชื่อยาที่เบิก</th>
+                <th>จำนวน</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in report %}
+                <tr>
+                    <td>{{ i.username }}</td>
+                    <td>{{ i.address }}</td>
+                    <td>{{ i.tal }}</td>
+                    <td>{{ i.drug_name }}</td>
+                    <td>{{ i.drug_qty }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteConfirmationModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteConfirmationModalLabel">Confirm Deletion</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to delete this item?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                  <a id="deleteButton" href="#" class="btn btn-danger">Delete</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <script> 
+            function setDeleteUrl(url) {
+              document.getElementById('deleteButton').href = url;
+            }
+          </script>
+      
+        </div>
+    </table>
+</div>
+{% endblock %}
